@@ -9,6 +9,8 @@
 
 Pertama-tama, user ingin mengunjungi suatu website melalui browser (website yang menggunakan Django). Dalam kasus ini, user meminta request ke website. Django menerima request tersebut. URL yang diterima oleh Django akan dicek dan akan memanggil view yang sesuai dengan url. Setelah mendapat view yang sesuai, views.py akan mengecek model yang sesuai dari models.py Setelah mengimport model yang sesuai, view akan memanggil template yang sesuai dari folder templates. User akan menerima respons berupa HTML dari template yang diteruskan ke browser dan akan ditampilkan ke pengguna.
 
+[Referensi 1](https://prasetyadi.name/2021/pengantar-framework-django/), [Referensi 2](https://www.w3schools.com/django/django_intro.php)
+
 ## Kenapa menggunakan virtual environment?
 
 Virtual Environment adalah _environment_ (lingkungan) Python sedemikan rupa sehingga _interpreter_, _libraries_, dan _scripts_ yang di-_install_ di lingkungan tersebut terisolasi dari Virtual Environment lain dan _libraries_ lain yang di-_install_ di sistem Python, misalnya di dalam sistem operasi.
