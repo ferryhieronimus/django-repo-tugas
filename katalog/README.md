@@ -3,6 +3,11 @@
 [Lihat website di sini](https://tugaspbpferry.herokuapp.com/katalog)
 
 
+## Model View Template (MVT)
+
+![diagram1](/images/diagram1.png)
+
+Pertama-tama, user ingin mengunjungi suatu website melalui browser (website yang menggunakan Django). Dalam kasus ini, user meminta request ke website. Django menerima request tersebut. URL yang diterima oleh Django akan dicek dan akan memanggil view yang sesuai dengan url. Setelah mendapat view yang sesuai, views.py akan mengecek model yang sesuai dari models.py Setelah mengimport model yang sesuai, view akan memanggil template yang sesuai dari folder templates. User akan menerima respons berupa HTML dari template yang diteruskan ke browser dan akan ditampilkan ke pengguna.
 
 ## Kenapa menggunakan virtual environment?
 
