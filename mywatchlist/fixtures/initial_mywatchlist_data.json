@@ -1,0 +1,112 @@
+[
+    {
+      "model": "mywatchlist.mywatchlist",
+      "pk": 1,
+      "fields": {
+        "watched": false,
+        "title": "Mencuri Raden Saleh",
+        "rating": 4.1,
+        "release_date": "2022-08-25",
+        "review": "Terkenal, banyak teman saya yang nonton katanya seru"
+      }
+    },
+    {
+      "model": "mywatchlist.mywatchlist",
+      "pk": 2,
+      "fields": {
+        "watched": true,
+        "title": "Tenet",
+        "rating": 2,
+        "release_date": "2021-02-10",
+        "review": "Overcomplicated, ambisi antagonis nya lemah"
+      }
+    },
+    {
+      "model": "mywatchlist.mywatchlist",
+      "pk": 3,
+      "fields": {
+        "watched": true,
+        "title": "Avengers Endgame",
+        "rating": 3,
+        "release_date": "2019-04-25",
+        "review": "Agak overrated"
+      }
+    },
+    {
+      "model": "mywatchlist.mywatchlist",
+      "pk": 4,
+      "fields": {
+        "watched": true,
+        "title": "Primer",
+        "rating": 3,
+        "release_date": "2004-10-08",
+        "review": "Nonton kedua kalinya jadi lumayan seru"
+      }
+    },
+    {
+      "model": "mywatchlist.mywatchlist",
+      "pk": 5,
+      "fields": {
+        "watched": true,
+        "title": "Spider-Man: No Way Home",
+        "rating": 4,
+        "release_date": "2021-12-15",
+        "review": "Nostalgic"
+      }
+    },
+    {
+      "model": "mywatchlist.mywatchlist",
+      "pk": 6,
+      "fields": {
+        "watched": true,
+        "title": "Doctor Strange in the Multiverse of Madness",
+        "rating": 3,
+        "release_date": "2022-05-05",
+        "review": "Sam Raimi"
+      }
+    },
+    {
+      "model": "mywatchlist.mywatchlist",
+      "pk": 7,
+      "fields": {
+        "watched": true,
+        "title": "The Batman",
+        "rating": 5,
+        "release_date": "2022-03-02",
+        "review": "Keren bngttttttttt"
+      }
+    },
+    {
+      "model": "mywatchlist.mywatchlist",
+      "pk": 8,
+      "fields": {
+        "watched": false,
+        "title": "Top Gun: Maverick",
+        "rating": 5,
+        "release_date": "2022-05-27",
+        "review": "Kata orang film terbaiknya Tom Cruise"
+      }
+    },
+    {
+      "model": "mywatchlist.mywatchlist",
+      "pk": 9,
+      "fields": {
+        "watched": false,
+        "title": "Morbius",
+        "rating": 2,
+        "release_date": "2022-03-30",
+        "review": "It's morbin time!"
+      }
+    },
+    {
+      "model": "mywatchlist.mywatchlist",
+      "pk": 10,
+      "fields": {
+        "watched": true,
+        "title": "La La Land",
+        "rating": 4,
+        "release_date": "2016-12-09",
+        "review": "Bikin baper :("
+      }
+    }
+  ]
