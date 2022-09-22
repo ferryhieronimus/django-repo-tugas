@@ -3,6 +3,9 @@ from mywatchlist.models import MyWatchList
 from django.http import HttpResponse
 from django.core import serializers
 
+def show_index(request):
+    return render(request, "index_mywatchlist.html")
+
 def show_mywatchlist(request):
     return render(request, "mywatchlist.html", context)
 

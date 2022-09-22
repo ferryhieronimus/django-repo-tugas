@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html{
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            color: #5a6e7b;
+        }
+        #box1, #box2, #box3 {
+            margin: 40px;
+            padding: 50px;
+            border-radius: 40px;
+            background: #F0F3F9;
+            box-shadow:  20px 20px 70px #bbbec2,
+                        -20px -20px 70px #ffffff;
+        }
+        #box1{
+            margin-top: 70px;
+        }
+        body {
+            background-color: #F7F9FC;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        a {
+            color: inherit; /* blue colors for links too */
+            text-decoration: inherit; /* no underline */
+        }
+        div:not(#parent):hover,
+        div:not(#parent):focus {
+            transform: scale(1.05);
+            transition-duration: 0.2s;
+            transition-timing-function: ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <a href="/mywatchlist/html/">
+        <div id="box1">
+            HTML
+        </div>
+        </a>
+        <a href="/mywatchlist/json/">
+            <div id="box2">
+                JSON
+            </div>
+        </a>
+        <a href="/mywatchlist/xml/">
+            <div id="box3">
+                XML
+            </div>
+        </a>
+    </div>
+</body>
+</html>
