@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Todolist {{ username }}</title>
+{% endblock meta %}
+
+{% block content %}
+<h1>Welcome back, {{ username }}!</h1>
+
+<table>
+  <tr>
+    <th>Task</th>
+    <th>Description</th>
+    <th>Created At</th>
+    <th>Status (klik untuk mengubah)</th>
+    <th>Delete task</th>
+  </tr>
+  {% for todo in todolist %}
+    <tr>
+      <td>{{todo.title}}</td>
+      <td>{{todo.description}}</td>
+      <td>{{todo.date|date:'Y-m-d H:i:s'}}</td>
+      <td>       
+          <a href="{% url 'todolist:update_status' todo.id %}">
+            {% if todo.is_finished %} 
+              Selesai
+            {% else %}
+              Belum Selesai
+            {% endif %}
+          </a>
+      </td>
+      <td>
+        <button>
+          <a href="{% url 'todolist:delete_todo' todo.id %}">Hapus Task</a>
+        </button>
+      </td>
+    </tr>
+  {% endfor %}  
+</table>
+
+<h5>Sesi terakhir login: {{ last_login}}</h5>
+
+<button>
+  <a href="{% url 'todolist:logout' %}">Logout</a>
+</button>
+
+<button>
+  <a href="{% url 'todolist:create_todo' %}">Tambah Task Baru</a>
+</button>
+
+<button>
+  <a href="{% url 'todolist:show_xml' %}">xml</a>
+</button>
+{% endblock content %}
