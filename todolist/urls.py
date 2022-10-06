@@ -18,5 +18,6 @@ urlpatterns = [
     path("logout/", logout_user, name="logout"),    
     path("delete/<int:id>", delete_todo, name="delete_todo"),
     path("update/<int:id>", update_status, name="update_status"),
+    path("date/", show_todolist, name="update_status"),
     path('xml/', show_xml, name='show_xml'),
 ]

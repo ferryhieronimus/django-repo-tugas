@@ -44,7 +44,7 @@ body {
     height: 97vh;
 }
 
-input:not(.btn) {
+input:not(input[value="Daftar"]) {
     color: #5a6e7b;
     font-size: 0.8rem;
     margin: 8px;
@@ -61,7 +61,7 @@ input:focus{
     outline: none;
 }
 
-.btn{
+input[value="Daftar"]{
     font: inherit;
     font-size: 0.8rem;
     margin: 8px 32px;
@@ -74,7 +74,7 @@ input:focus{
      -1px -1px 1px #7ce67c;
 }
 
-.btn:hover{
+input[value="Daftar"]:hover{
     box-shadow: inset 5px 5px 8px #6ac56a,
     inset -5px -5px 8px #84f584;
 }

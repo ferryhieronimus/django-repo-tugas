@@ -2,53 +2,81 @@
 
 {% block meta %}
 <title>Todolist {{ username }}</title>
+<style>
+  #card:hover{
+    transform: scale(1.03);
+    transition-timing-function: ease;
+    transition: 0.2s;
+  }
+</style>
 {% endblock meta %}
 
 {% block content %}
-<h1>Welcome back, {{ username }}!</h1>
 
-<table>
-  <tr>
-    <th>Task</th>
-    <th>Description</th>
-    <th>Created At</th>
-    <th>Status (klik untuk mengubah)</th>
-    <th>Delete task</th>
-  </tr>
-  {% for todo in todolist %}
-    <tr>
-      <td>{{todo.title}}</td>
-      <td>{{todo.description}}</td>
-      <td>{{todo.date|date:'Y-m-d H:i:s'}}</td>
-      <td>       
-          <a href="{% url 'todolist:update_status' todo.id %}">
-            {% if todo.is_finished %} 
-              Selesai
-            {% else %}
-              Belum Selesai
-            {% endif %}
-          </a>
-      </td>
-      <td>
-        <button>
-          <a href="{% url 'todolist:delete_todo' todo.id %}">Hapus Task</a>
-        </button>
-      </td>
-    </tr>
-  {% endfor %}  
-</table>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">MyToDoList</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="btn btn-primary" aria-current="page" href="#">Home</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+<h1 style="margin-bottom: 32px; margin-top: 32px;">Welcome back, {{ username }}!</h1>
+<div class="d-flex mw-100 justify-content-evenly flex-wrap" style="gap: 6px; margin-bottom: 32px; width: 300px"> 
 
-<h5>Sesi terakhir login: {{ last_login}}</h5>
+  
+  <a class="btn btn-primary" href="{% url 'todolist:show_xml' %}">xml</a>
+  <a class="btn btn-primary" href="{% url 'todolist:create_todo' %}">Tambah Task Baru</a>
+  
+  <a class="btn btn-danger" href="{% url 'todolist:logout' %}">Logout</a>
+</div>
+  <div class="row row-cols-1 row-cols-md-4 g-4" >
+    {% for todo in todolist %}
+    <div class="col" >
+      <div class="card h-100 hoverable" id="card">
+        <div class="card-body d-flex justify-content-between flex-column">
+          <div class="main-item">
+            <h4 class="card-title">{{todo.title}}</h4>
+            <p class="card-subtitle mb-2 text-muted">{{todo.description}}</p>
+          </div>
+          <div class="row row-cols-1 row-cols-md-1 g-1">
 
-<button>
-  <a href="{% url 'todolist:logout' %}">Logout</a>
-</button>
+            <div class="col">
 
-<button>
-  <a href="{% url 'todolist:create_todo' %}">Tambah Task Baru</a>
-</button>
+              {% if todo.is_finished %} 
+              <a class="btn btn-success" href="{% url 'todolist:update_status' todo.id %}">
+                  Selesai
+                </a>
+                {% else %}
+                <a class="btn btn-warning" href="{% url 'todolist:update_status' todo.id %}">
+                  Belum selesai
+                </a>
+                {% endif %}
+            </div>
+  
+            <div class="col">
 
-<button>
-  <a href="{% url 'todolist:show_xml' %}">xml</a>
-</button>
+              <a class="btn btn-danger" href="{% url 'todolist:delete_todo' todo.id %} ">Hapus Task</a>
+            </div>
+            
+          </div>
+    
+  
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">created at: {{todo.date|date:'Y-m-d H:i:s'}}</small>
+        </div>
+      </div>
+    </div>
+    {% endfor %}  
+  </div>
+
+<h5 style="margin-top: 32px;">Sesi terakhir login: {{ last_login}}</h5>
+
+
 {% endblock content %}

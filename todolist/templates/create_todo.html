@@ -1,7 +1,9 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block meta %}
 <title>Create Todo</title>
+<link rel="stylesheet" href="{% static 'css/styles_create.css' %}">
 {% endblock meta %}
 
 {% block content %}
@@ -9,14 +11,24 @@
 <h3>{{ title }}</h3>
 <form method="post">
     {% csrf_token %}
+<div id="boxlogin" class="d-flex flex-column align-items-center" style="gap: 16px">
+    <h5>Tambah Task</h5>
+    <div class="d-flex flex-row align-items-evenly flex-wrap">
+        <div>
+            <label for="title">Title:</label>
+            <input type="text" name="title" placeholder="Judul task">
+        </div>
+    
+        <div>
+            <label for="description">Description:</label>
+            <input type="text" name="description" placeholder="Deskripsi task">
 
-    <label for="title">Title</label>
-    <input type="text" name="title" placeholder="Judul task">
+        </div>
+        <button type="submit" class="btn btn-primary">Create Task</button>
+    </div>
 
-    <label for="description">Description</label>
-    <input type="text" name="description" placeholder="Deskripsi task">
 
-    <button type="submit">Create Task</button>
+</div>
 </form>
 
 {% endblock %}

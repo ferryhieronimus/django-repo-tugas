@@ -20,7 +20,7 @@ from django.core import serializers
 
 @login_required(login_url='/todolist/login/')
 def show_todolist(request):
-    todolist_objects = ToDoList.objects.filter(user=request.user)
+    todolist_objects = sorted(ToDoList.objects.filter(user=request.user), key=lambda x: x.is_finished)
     context = {
         "todolist": todolist_objects, 
         "username": request.user, 
