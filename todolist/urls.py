@@ -7,6 +7,8 @@ from todolist.views import create_todo
 from todolist.views import delete_todo
 from todolist.views import update_status
 from todolist.views import show_xml
+from todolist.views import show_json
+from todolist.views import add
 
 app_name = 'todolist'
 
@@ -20,4 +22,6 @@ urlpatterns = [
     path("update/<int:id>", update_status, name="update_status"),
     path("date/", show_todolist, name="update_status"),
     path('xml/', show_xml, name='show_xml'),
+    path('json/', show_json, name='show_json'),
+    path('add/', add, name='add'),
 ]

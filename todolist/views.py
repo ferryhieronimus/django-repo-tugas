@@ -9,6 +9,9 @@ from django.contrib.auth import authenticate, login
 
 from django.contrib.auth import logout
 
+from django.views.decorators.csrf import csrf_exempt
+
+
 import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -17,6 +20,9 @@ from todolist.models import ToDoList
 
 from django.http import HttpResponse
 from django.core import serializers
+
+from django.http import JsonResponse
+
 
 @login_required(login_url='/todolist/login/')
 def show_todolist(request):
@@ -94,3 +100,30 @@ def update_status(request, id):
 def show_xml(request):
     data = ToDoList.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+def show_json(request):
+    data = ToDoList.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+@login_required(login_url='/todolist/login/')
+def add(request):
+    if request.method == "POST":
+        title = request.POST.get("judul")
+        description = request.POST.get("deskripsi")
+        task = ToDoList.objects.create(
+            user=request.user,
+            title=title,
+            description=description,
+            date=datetime.datetime.today(),
+        )
+    return JsonResponse(
+        {
+                "pk": task.id,
+                "fields": {
+                    "title": task.title,
+                    "description": task.description,
+                    "is_finished": task.is_finished,
+                    "date": task.date,
+                },
+            }
+    )
