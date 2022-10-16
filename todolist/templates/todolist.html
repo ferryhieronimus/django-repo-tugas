@@ -100,10 +100,150 @@
 
       
       $("#deadlinectn").click(function(){
-        alert(11111111111);
         document.getElementsByClassName("card-container").innerHTML = "";
         $.get("{% url 'todolist:show_json' %}", function (data) {
         console.log( data.sort(function(a,b){return a.fields.deadline - b.fields.deadline}))
+        $.each(data, function(index, value) {
+          let status = value.fields.is_finished ? `<a class="btn btn-success" href="/todolist/update/${value.pk}">
+                          Selesai
+                        </a>`: `<a class="btn btn-warning" href="/todolist/update/${value.pk}">
+                          Belum selesai
+                        </a>`
+          $(".card-container").append (
+            `
+            <div class="col" >
+              <div class="card h-100 hoverable" id="card" style="min-width: 200px">
+                <div class="card-body d-flex justify-content-between flex-column">
+                  <div class="main-item">
+                    <h4 class="card-title">${value.fields.title}</h4>
+                    <p class="card-subtitle mb-2 text-muted">${value.fields.description}</p>
+                    <h6 class="card-subtitle mb-2 text-muted">Deadline: ${value.fields.deadline.split("-")[2]+"-"+value.fields.deadline.split("-")[1]+"-"+value.fields.deadline.split("-")[0]}</h6>
+                  </div>
+                  <div class="row row-cols-1 row-cols-md-1 g-1">
+  
+                    <div class="col">
+                      ${status}
+                    </div>
+  
+                    <div class="col">
+  
+                      <a class="btn btn-danger" href="/todolist/delete/${value.pk}">Hapus Task</a>
+                    </div>
+                    
+                  </div>
+            
+  
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">created at: ${value.fields.date.split("T")[0].split("-")[2]+"-"+value.fields.date.split("T")[0].split("-")[1]+"-"+value.fields.date.split("T")[0].split("-")[0]}</small>
+                </div>
+              </div>
+            </div>
+            `
+          );
+        });
+      });
+      $(".card-container").html("");
+      });
+
+      $("#deadlineftn").click(function(){
+        document.getElementsByClassName("card-container").innerHTML = "";
+        $.get("{% url 'todolist:show_json' %}", function (data) {
+        console.log( data.sort(function(a,b){return a.fields.deadline - b.fields.deadline ? 1 : -1}))
+        $.each(data, function(index, value) {
+          let status = value.fields.is_finished ? `<a class="btn btn-success" href="/todolist/update/${value.pk}">
+                          Selesai
+                        </a>`: `<a class="btn btn-warning" href="/todolist/update/${value.pk}">
+                          Belum selesai
+                        </a>`
+          $(".card-container").append (
+            `
+            <div class="col" >
+              <div class="card h-100 hoverable" id="card" style="min-width: 200px">
+                <div class="card-body d-flex justify-content-between flex-column">
+                  <div class="main-item">
+                    <h4 class="card-title">${value.fields.title}</h4>
+                    <p class="card-subtitle mb-2 text-muted">${value.fields.description}</p>
+                    <h6 class="card-subtitle mb-2 text-muted">Deadline: ${value.fields.deadline.split("-")[2]+"-"+value.fields.deadline.split("-")[1]+"-"+value.fields.deadline.split("-")[0]}</h6>
+                  </div>
+                  <div class="row row-cols-1 row-cols-md-1 g-1">
+  
+                    <div class="col">
+                      ${status}
+                    </div>
+  
+                    <div class="col">
+  
+                      <a class="btn btn-danger" href="/todolist/delete/${value.pk}">Hapus Task</a>
+                    </div>
+                    
+                  </div>
+            
+  
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">created at: ${value.fields.date.split("T")[0].split("-")[2]+"-"+value.fields.date.split("T")[0].split("-")[1]+"-"+value.fields.date.split("T")[0].split("-")[0]}</small>
+                </div>
+              </div>
+            </div>
+            `
+          );
+        });
+      });
+      $(".card-container").html("");
+      });
+
+      $("#ztoa").click(function(){
+        document.getElementsByClassName("card-container").innerHTML = "";
+        $.get("{% url 'todolist:show_json' %}", function (data) {
+        console.log( data.sort(function(a,b){return a.fields.judul > b.fields.judul ? 1 : -1}))
+        $.each(data, function(index, value) {
+          let status = value.fields.is_finished ? `<a class="btn btn-success" href="/todolist/update/${value.pk}">
+                          Selesai
+                        </a>`: `<a class="btn btn-warning" href="/todolist/update/${value.pk}">
+                          Belum selesai
+                        </a>`
+          $(".card-container").append (
+            `
+            <div class="col" >
+              <div class="card h-100 hoverable" id="card" style="min-width: 200px">
+                <div class="card-body d-flex justify-content-between flex-column">
+                  <div class="main-item">
+                    <h4 class="card-title">${value.fields.title}</h4>
+                    <p class="card-subtitle mb-2 text-muted">${value.fields.description}</p>
+                    <h6 class="card-subtitle mb-2 text-muted">Deadline: ${value.fields.deadline.split("-")[2]+"-"+value.fields.deadline.split("-")[1]+"-"+value.fields.deadline.split("-")[0]}</h6>
+                  </div>
+                  <div class="row row-cols-1 row-cols-md-1 g-1">
+  
+                    <div class="col">
+                      ${status}
+                    </div>
+  
+                    <div class="col">
+  
+                      <a class="btn btn-danger" href="/todolist/delete/${value.pk}">Hapus Task</a>
+                    </div>
+                    
+                  </div>
+            
+  
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">created at: ${value.fields.date.split("T")[0].split("-")[2]+"-"+value.fields.date.split("T")[0].split("-")[1]+"-"+value.fields.date.split("T")[0].split("-")[0]}</small>
+                </div>
+              </div>
+            </div>
+            `
+          );
+        });
+      });
+      $(".card-container").html("");
+      });
+
+      $("#atoz").click(function(){
+        document.getElementsByClassName("card-container").innerHTML = "";
+        $.get("{% url 'todolist:show_json' %}", function (data) {
+        console.log( data.sort(function(a,b){return a.fields.judul > b.fields.judul}))
         $.each(data, function(index, value) {
           let status = value.fields.is_finished ? `<a class="btn btn-success" href="/todolist/update/${value.pk}">
                           Selesai
@@ -165,10 +305,12 @@
         <div class="navbar-nav">
           <a class="btn btn-danger" href="{% url 'todolist:logout' %}">Logout</a>
         </div>
+
       </div>
     </div>
   </nav>
 <h1 style="margin-bottom: 32px; margin-top: 32px;">Welcome back, {{ username }}!</h1>
+
 <div class="d-flex mw-100 justify-content-evenly flex-wrap" style="gap: 6px; margin-bottom: 32px; width: 500px"> 
 
   
@@ -179,10 +321,10 @@
     Urutkan berdasarkan:
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="#">Nama Task (A-Z)</a></li>
-    <li><a class="dropdown-item" href="#">Nama Task (Z-A)</a></li>
+    <li><a class="dropdown-item" href="#" id="atoz">Nama Task (A-Z)</a></li>
+    <li><a class="dropdown-item" href="#" id="ztoa">Nama Task (Z-A)</a></li>
     <li><a class="dropdown-item" href="#" id="deadlinectn">Deadline (closest to now)</a></li>
-    <li><a class="dropdown-item" href="#">Deadline (farthest to now)</a></li>
+    <li><a class="dropdown-item" href="#" id="deadlineftn">Deadline (farthest to now)</a></li>
   </ul>
 </div>
 
@@ -190,9 +332,6 @@
 <div class="row row-cols-1 row-cols-md-4 g-4 card-container" >
   
 </div>
-
-<h5 style="margin-top: 32px;">Sesi terakhir login: {{ last_login }}</h5>
-
 <!-- # MODAL -->
 <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
