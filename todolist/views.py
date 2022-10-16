@@ -110,11 +110,13 @@ def add(request):
     if request.method == "POST":
         title = request.POST.get("judul")
         description = request.POST.get("deskripsi")
+        deadline = request.POST.get("deadline")
         task = ToDoList.objects.create(
             user=request.user,
             title=title,
             description=description,
             date=datetime.datetime.today(),
+            deadline=deadline
         )
     return JsonResponse(
         {
@@ -124,6 +126,7 @@ def add(request):
                     "description": task.description,
                     "is_finished": task.is_finished,
                     "date": task.date,
+                    "deadline": task.deadline,
                 },
             }
     )
